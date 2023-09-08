@@ -37,7 +37,7 @@ Snippets.prototype.create = (title) => {
     return spreadsheet.spreadsheetId;
   } catch (err) {
     // TODO (developer) - Handle exception
-    Logger.log('Failed with error %s', err.message);
+    console.log('Failed with error %s', err.message);
   }
 };
 // [END sheets_create]
@@ -86,7 +86,7 @@ Snippets.prototype.batchUpdate = (spreadsheetId, title,
     return result;
   } catch (err) {
     // TODO (developer) - Handle exception
-    Logger.log('Failed with error %s', err.message);
+    console.log('Failed with error %s', err.message);
   }
 };
 // [END sheets_batch_update]
@@ -108,7 +108,7 @@ Snippets.prototype.getValues = function(spreadsheetId, range) {
     return result;
   } catch (err) {
     // TODO (developer) - Handle exception
-    Logger.log('Failed with error %s', err.message);
+    console.log('Failed with error %s', err.message);
   }
 };
 // [END sheets_get_values]
@@ -137,7 +137,7 @@ Snippets.prototype.batchGetValues = (spreadsheetId,
     return result;
   } catch (err) {
     // TODO (developer) - Handle exception
-    Logger.log('Failed with error %s', err.message);
+    console.log('Failed with error %s', err.message);
   }
 };
 // [END sheets_batch_get_values]
@@ -147,10 +147,10 @@ Snippets.prototype.batchGetValues = (spreadsheetId,
  * Updates the values in the specified range
  * @param {string} spreadsheetId spreadsheet's ID
  * @param {string} range the range of cells in spreadsheet
- * @param {} valueInputOption determines how the input should be interpreted
+ * @param {string} valueInputOption determines how the input should be interpreted
  * @see
  * https://developers.google.com/sheets/api/reference/rest/v4/ValueInputOption
- * @param {list<string>} _values list of values to input
+ * @param {list<list<string>>} _values list of string lists to input
  * @returns {*} spreadsheet with updated values
  */
 Snippets.prototype.updateValues = (spreadsheetId, range,
@@ -176,7 +176,7 @@ Snippets.prototype.updateValues = (spreadsheetId, range,
     return result;
   } catch (err) {
     // TODO (developer) - Handle exception
-    Logger.log('Failed with error %s', err.message);
+    console.log('Failed with error %s', err.message);
   }
 };
 // [END sheets_update_values]
@@ -186,10 +186,10 @@ Snippets.prototype.updateValues = (spreadsheetId, range,
  * Updates the values in the specified range
  * @param {string} spreadsheetId spreadsheet's ID
  * @param {string} range range of cells of the spreadsheet
- * @param valueInputOption determines how the input should be interpreted
+ * @param {string} valueInputOption determines how the input should be interpreted
  * @see
  * https://developers.google.com/sheets/api/reference/rest/v4/ValueInputOption
- * @param {list<string>} _values list of values to input
+ * @param {list<list<string>>} _values list of string values to input
  * @returns {*} spreadsheet with updated values
  */
 Snippets.prototype.batchUpdateValues =
@@ -222,7 +222,7 @@ Snippets.prototype.batchUpdateValues =
       return result;
     } catch (err) {
       // TODO (developer) - Handle exception
-      Logger.log('Failed with error %s', err.message);
+      console.log('Failed with error %s', err.message);
     }
   };
 // [END sheets_batch_update_values]
@@ -240,7 +240,6 @@ Snippets.prototype.batchUpdateValues =
  */
 Snippets.prototype.appendValues = (spreadsheetId, range,
   valueInputOption, _values) => {
-  // [START sheets_append_values]
   let values = [
     [
       // Cell values ...
@@ -263,7 +262,7 @@ Snippets.prototype.appendValues = (spreadsheetId, range,
     return result;
   } catch (err) {
     // TODO (developer) - Handle exception
-    Logger.log('Failed with error %s', err.message);
+    console.log('Failed with error %s', err.message);
   }
 };
 // [END sheets_append_values]
@@ -341,7 +340,7 @@ Snippets.prototype.pivotTable = (spreadsheetId) => {
     return response;
   } catch (err) {
     // TODO (developer) - Handle exception
-    Logger.log('Failed with error %s', err.message);
+    console.log('Failed with error %s', err.message);
   }
 };
 // [END sheets_pivot_tables]
@@ -402,7 +401,7 @@ Snippets.prototype.conditionalFormatting = (spreadsheetId) => {
 
     let rule2Condition = Sheets.newBooleanCondition();
     rule2Condition.type = 'CUSTOM_FORMULA';
-    rule2Condition.values = [rule1ConditionalValue];
+    rule2Condition.values = [rule2ConditionalValue];
 
     let rule2BooleanRule = Sheets.newBooleanRule();
     rule2BooleanRule.condition = rule2Condition;
@@ -428,7 +427,7 @@ Snippets.prototype.conditionalFormatting = (spreadsheetId) => {
     return response;
   } catch (err) {
     // TODO (developer) - Handle exception
-    Logger.log('Failed with error %s', err.message);
+    console.log('Failed with error %s', err.message);
   }
 };
 // [END sheets_conditional_formatting]
